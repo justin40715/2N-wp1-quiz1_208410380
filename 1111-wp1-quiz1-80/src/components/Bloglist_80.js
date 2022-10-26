@@ -22,8 +22,8 @@ const Bloglist_80 = () => {
 
   const removeItem = (id) => {
     showAlert(true, 'item removed', 'danger');
-    let newBlogs = blogs.filter((blog) => blog.id !== id);
-    setBlogs(newBlogs);
+    setBlogs(blogs.filter((blog) => blog.id !== id));
+
   };
 
   const clearItem = (blogs) => {
@@ -35,8 +35,7 @@ const Bloglist_80 = () => {
     if (category === 'all') {
       setBlogs(blogData_80);
     } else {
-      const newBlogs = blogData_80.filter((item) => item.style === category);
-      setBlogs(newBlogs);
+      setBlogs(blogData_80.filter((item) => item.style === category));
     }
   };
 
