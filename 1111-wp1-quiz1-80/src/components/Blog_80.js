@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const Blog_80 = ({ id, img, style, title, content, removeItem, clearItem }) => {
+const Blog_80 = ({ id, img, style, title, content, removeItem}) => {
   // console.log('id', id);
   return (
     <article className='blog'>

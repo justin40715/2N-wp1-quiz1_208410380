@@ -2,20 +2,32 @@ import React from 'react';
 import { useState } from 'react';
 import blogData_80 from './blogData_80';
 import Blog_80 from './Blog_80';
+import Alert_80 from './Alert_80';
 
 const allCategories = ['all', 'lifestyle', 'travel'];
 
 const Bloglist_80 = () => {
   const [blogs, setBlogs] = useState(blogData_80);
   const [categories, setCategories] = useState(allCategories);
+  const [alert, setAlert] = useState({
+    show: false,
+    msg: '',
+    type: '',
+  });
   console.log('blogs', blogs);
 
+  const showAlert = (show = false, msg = '', type = '') => {
+    setAlert({ show, msg, type });
+  };
+
   const removeItem = (id) => {
+    showAlert(true, 'item removed', 'danger');
     let newBlogs = blogs.filter((blog) => blog.id !== id);
     setBlogs(newBlogs);
   };
 
   const clearItem = (blogs) => {
+    showAlert(true, 'empty list', 'danger');
     setBlogs([]);
   };
 
@@ -32,6 +44,7 @@ const Bloglist_80 = () => {
     <section className='blogs'>
       <div className='section-title'>
         <h2>CSS Grid using breakpoints</h2>
+        {alert.show && <Alert_80 {...alert} removeAlert={showAlert} />}
       </div>
       <div className='filter-container'>
         {categories.map((item, index) => {
